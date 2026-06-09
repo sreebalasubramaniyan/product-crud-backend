@@ -26,7 +26,7 @@ router.get("/google/callback",
     );
 
     // Redirect to frontend with token
-    res.redirect(`http://localhost:5173?token=${token}`);
+    res.redirect(`https://product-crud-frontend.onrender.com?token=${token}`);
   }
 );
 
