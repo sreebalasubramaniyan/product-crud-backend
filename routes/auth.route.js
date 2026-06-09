@@ -26,7 +26,7 @@ router.get("/google/callback",
     );
 
     // Redirect to frontend with token
-    res.redirect(`https://product-crud-frontend.onrender.com?token=${token}`);
+    res.redirect(`https://product-crud-frontend-one.vercel.app?token=${token}`);
   }
 );
 
