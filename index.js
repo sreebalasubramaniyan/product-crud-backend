@@ -2,14 +2,24 @@ require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
 const passport = require("passport")
+const session = require("express-session")
 const Product = require("./models/product.model.js")
 const productRoutes = require("./routes/product.route.js")
 const authRoutes = require("./routes/auth.route.js")
 const cors = require("cors")
 const app = express()
 
+// Session middleware (required for Passport Google OAuth)
+app.use(session({
+  secret: process.env.JWT_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: true } // Set to false if not using HTTPS
+}))
+
 // Initialize passport
 app.use(passport.initialize())
+app.use(passport.session())
 require("./config/passport.js")
 
 const users  = [
