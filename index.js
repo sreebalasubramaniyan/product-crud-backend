@@ -1,11 +1,17 @@
 require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
+const passport = require("passport")
 const Product = require("./models/product.model.js")
 const productRoutes = require("./routes/product.route.js")
 const authRoutes = require("./routes/auth.route.js")
 const cors = require("cors")
 const app = express()
+
+// Initialize passport
+app.use(passport.initialize())
+require("./config/passport.js")
+
 const users  = [
   {
     id: "u_01J8X",
